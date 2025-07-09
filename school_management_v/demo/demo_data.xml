@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Teachers -->
+        <record id="teacher_john_doe" model="res.partner">
+            <field name="name">John Doe</field>
+            <field name="is_teacher" eval="True"/>
+            <field name="email">john.doe@example.com</field>
+        </record>
+
+        <record id="teacher_jane_smith" model="res.partner">
+            <field name="name">Jane Smith</field>
+            <field name="is_teacher" eval="True"/>
+            <field name="email">jane.smith@example.com</field>
+        </record>
+
+        <!-- Students -->
+        <record id="student_peter_jones" model="res.partner">
+            <field name="name">Peter Jones</field>
+            <field name="is_student" eval="True"/>
+            <field name="email">peter.jones@example.com</field>
+        </record>
+
+        <record id="student_mary_williams" model="res.partner">
+            <field name="name">Mary Williams</field>
+            <field name="is_student" eval="True"/>
+            <field name="email">mary.williams@example.com</field>
+        </record>
+
+        <!-- Subjects -->
+        <record id="subject_math_101" model="school.subject">
+            <field name="name">Mathematics 101</field>
+            <field name="code">MATH101</field>
+            <field name="cost">500.00</field>
+            <field name="teacher_ids" eval="[(6, 0, [ref('teacher_john_doe')])]"/>
+        </record>
+
+        <record id="subject_hist_202" model="school.subject">
+            <field name="name">History 202</field>
+            <field name="code">HIST202</field>
+            <field name="cost">450.00</field>
+            <field name="teacher_ids" eval="[(6, 0, [ref('teacher_jane_smith')])]"/>
+        </record>
+
+        <record id="subject_sci_101" model="school.subject">
+            <field name="name">Science 101</field>
+            <field name="code">SCI101</field>
+            <field name="cost">550.00</field>
+            <field name="teacher_ids" eval="[(6, 0, [ref('teacher_john_doe')])]"/>
+        </record>
+
+        <!-- Schedules -->
+        <record id="schedule_math_mon_0900" model="school.subject.schedule">
+            <field name="subject_id" ref="subject_math_101"/>
+            <field name="teacher_id" ref="teacher_john_doe"/>
+            <field name="day_of_week">monday</field>
+            <field name="start_time">9.0</field> <!-- 9:00 AM -->
+            <field name="end_time">11.0</field> <!-- 11:00 AM -->
+        </record>
+
+        <record id="schedule_hist_tue_1300" model="school.subject.schedule">
+            <field name="subject_id" ref="subject_hist_202"/>
+            <field name="teacher_id" ref="teacher_jane_smith"/>
+            <field name="day_of_week">tuesday</field>
+            <field name="start_time">13.0</field> <!-- 1:00 PM -->
+            <field name="end_time">15.0</field> <!-- 3:00 PM -->
+        </record>
+
+        <!-- Enrollments -->
+        <!-- 1. Draft Enrollment for Peter Jones in Science -->
+        <record id="enrollment_peter_sci" model="school.enrollment">
+            <field name="student_id" ref="student_peter_jones"/>
+            <field name="schedule_id" ref="schedule_sci_wed_1000"/>
+        </record>
+
+        <!-- 2. Confirmed Enrollment for Mary Williams in History -->
+        <record id="enrollment_mary_hist" model="school.enrollment">
+            <field name="student_id" ref="student_mary_williams"/>
+            <field name="schedule_id" ref="schedule_hist_tue_1300"/>
+        </record>
+        <function model="school.enrollment" name="action_confirm" eval="[ref('enrollment_mary_hist')]"/>
+
+    </data>
+</odoo>

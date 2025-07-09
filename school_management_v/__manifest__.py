@@ -44,10 +44,12 @@
         "report/enrollment_report.xml",
         "report/enrollment_report_templates.xml",
     ],
+    'demo': [
+        'demo/demo_data.xml',
+    ],
     "assets": {
         "web.assets_backend": [
             "school_management_v/static/src/**/*",
-            # 'school_management/static/src/scss/dashboard.scss',
         ],
     },
     "installable": True,
