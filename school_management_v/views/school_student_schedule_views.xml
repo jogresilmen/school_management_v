@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <!-- Vista de lista para Horario del Estudiante -->
+        <record id="view_school_student_schedule_tree" model="ir.ui.view">
+            <field name="name">school.student.schedule.tree</field>
+            <field name="model">school.student.schedule</field>
+            <field name="arch" type="xml">
+                <tree string="Horarios de Estudiantes" create="false" edit="false">
+                    <field name="student_id"/>
+                    <field name="subject_id"/>
+                    <field name="teacher_id"/>
+                    <field name="day_of_week"/>
+                    <field name="start_time" widget="float_time"/>
+                    <field name="end_time" widget="float_time"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para Horario del Estudiante -->
+        <record id="view_school_student_schedule_form" model="ir.ui.view">
+            <field name="name">school.student.schedule.form</field>
+            <field name="model">school.student.schedule</field>
+            <field name="arch" type="xml">
+                <form string="Horario de Estudiante" create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <field name="enrollment_id"/>
+                            <field name="student_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <!-- Hereda la vista de formulario de Contactos para añadir la pestaña de Educación -->
+        <record id="view_partner_form_school" model="ir.ui.view">
+            <field name="name">res.partner.form.school</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Educación" name="school_info" autofocus="autofocus">
+                        <group>
+                            <group>
+                                <field name="is_student"/>
+                                <field name="is_teacher"/>
+                            </group>
+                        </group>
+                        <group string="Materias que Imparte" attrs="{'invisible': [('is_teacher', '=', False)]}">
+                            <field name="teach_subject_ids" nolabel="1"/>
+                        </group>
+                        <group string="Materias Inscritas" attrs="{'invisible': [('is_student', '=', False)]}">
+                            <field name="enrolled_subject_ids" nolabel="1" readonly="1"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</odoo>

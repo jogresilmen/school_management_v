@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="school_management_v.SchoolDashboard" owl="1">
+        <div class="o_school_dashboard h-100">
+            <iframe src="/school/powerbi_dashboard"
+                    class="w-100 h-100"
+                    style="border: none;"/>
+        </div>
+    </t>
+</templates>

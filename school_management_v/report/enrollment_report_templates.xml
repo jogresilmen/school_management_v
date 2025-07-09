@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+        <template id="report_enrollment_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h2>Comprobante de Inscripción: <span t-field="doc.name"/></h2>
+
+                            <div class="row mt32 mb32">
+                                <div class="col-6">
+                                    <strong>Estudiante:</strong>
+                                    <p t-field="doc.student_id.name"/>
+                                </div>
+                                <div class="col-6">
+                                    <strong>Fecha de Inscripción:</strong>
+                                    <p t-field="doc.create_date" t-options='{"widget": "date"}'/>
+                                </div>
+                            </div>
+
+                            <h3>Detalles de la Materia</h3>
+                            <table class="table table-sm o_main_table">
+                                <thead>
+                                    <tr>
+                                        <th name="th_subject" class="text-left">Materia</th>
+                                        <th name="th_teacher" class="text-left">Profesor</th>
+                                        <th name="th_day" class="text-left">Día</th>
+                                        <th name="th_time" class="text-left">Horario</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span t-field="doc.subject_id.name"/></td>
+                                        <td><span t-field="doc.teacher_id.name"/></td>
+                                        <td><span t-field="doc.schedule_id.day_of_week"/></td>
+                                        <td>
+                                            <span t-field="doc.schedule_id.start_time" t-options='{"widget": "float_time"}'/> - 
+                                            <span t-field="doc.schedule_id.end_time" t-options='{"widget": "float_time"}'/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

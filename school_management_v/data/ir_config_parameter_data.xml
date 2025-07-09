@@ -1,0 +1,10 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Coloca aquí tu URL de Power BI. ¡NO compartas este archivo si contiene información sensible! -->
+        <record id="powerbi_url_param" model="ir.config_parameter">
+            <field name="key">school_management_v.powerbi_url</field>
+            <field name="value">https://app.powerbi.com/view?r=eyJrIjoiN2UyZDUzZTUtMTZmMi00YjMwLWFlZTEtZTk2NzQ1NjJhZDE4IiwidCI6IjBiMTgwYjAyLTIzMTUtNDBjMS05ZWIxLTY0MDk4N2FmNDRkYyIsImMiOjl9</field>
+        </record>
+        
+    </data>
+</odoo>

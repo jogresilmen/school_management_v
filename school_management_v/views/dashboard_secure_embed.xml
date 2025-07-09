@@ -1,0 +1,6 @@
+<odoo>
+    <data>
+        <!-- Este archivo fue creado para resolver un error de 'FileNotFoundError'. -->
+        <!-- La referencia a este archivo existe en __manifest__.py, pero el archivo estaba ausente. -->
+    </data>
+</odoo>

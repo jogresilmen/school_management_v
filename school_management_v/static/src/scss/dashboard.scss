@@ -1,0 +1,13 @@
+.o_action_manager {
+    .o_action_iframe {
+        // Asegura que el contenedor del iframe ocupe toda la altura del área de acción
+        height: 100%;
+        // Elimina cualquier padding por defecto que pueda aplicarse al contenido de la acción
+        padding: 0;
+
+        iframe {
+            // Asegura que el iframe en sí también ocupe todo el espacio de su contenedor
+            border: none; // Elimina el borde por defecto del iframe
+        }
+    }
+}

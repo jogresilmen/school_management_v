@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <!-- Acciones de Ventana -->
+        <record id="school_subject_action" model="ir.actions.act_window">
+            <field name="name">Materias</field>
+            <field name="res_model">school.subject</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="school_enrollment_action" model="ir.actions.act_window">
+            <field name="name">Inscripciones</field>
+            <field name="res_model">school.enrollment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="school_student_schedule_action" model="ir.actions.act_window">
+            <field name="name">Horarios de Estudiantes</field>
+            <field name="res_model">school.student.schedule</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="res_partner_teacher_action" model="ir.actions.act_window">
+            <field name="name">Profesores</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[('is_teacher', '=', True)]</field>
+            <field name="context">{'default_is_teacher': True}</field>
+        </record>
+
+        <record id="res_partner_student_action" model="ir.actions.act_window">
+            <field name="name">Estudiantes</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="domain">[('is_student', '=', True)]</field>
+            <field name="context">{'default_is_student': True}</field>
+        </record>
+
+        <!-- Menú Principal -->
+        <menuitem id="school_menu_root" name="Educación" web_icon="school_management_v,static/description/icon.png" sequence="10"/>
+        <!-- Submenús -->
+        <menuitem id="menu_school_enrollment_action" name="Inscripciones" parent="school_menu_root" action="school_enrollment_action" sequence="20"/>
+        <menuitem id="menu_school_student_schedule_action" name="Horarios de Estudiantes" parent="school_menu_root" action="school_student_schedule_action" sequence="30"/>
+        <!-- Menú de Configuración -->
+        <menuitem id="school_menu_config" name="Configuración" parent="school_menu_root" sequence="100" groups="school_management_v.group_school_manager"/>
+        <menuitem id="menu_school_subject_action" name="Materias" parent="school_menu_config" action="school_subject_action" sequence="10"/>
+        <menuitem id="menu_res_partner_teacher_action" name="Profesores" parent="school_menu_config" action="res_partner_teacher_action" sequence="20"/>
+        <menuitem id="menu_res_partner_student_action" name="Estudiantes" parent="school_menu_config" action="res_partner_student_action" sequence="30"/>
+        <menuitem id="menu_school_dashboard" name="Dashboard" parent="school_menu_root" action="action_school_dashboard" sequence="1"/>
+        <menuitem id="menu_school_contract" name="Contratos" parent="school_menu_root" action="action_school_contract" sequence="25"/>
+
+
+    </data>
+</odoo>
